@@ -1,0 +1,146 @@
+@font-face {
+  font-family: azidhor;
+  src: url("/static/font/azidhor.otf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  h1 {
+    color: white;
+    font-family: "azidhor";
+    text-align: center;
+    font-size: 80px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100px;
+      height: 100px;
+      background-image: url("/static/svg/alien_green.svg");
+      display: block;
+      position: absolute;
+      left: -60px;
+      top: -11px;
+      z-index: -1;
+      animation: floatLeft 6s ease-in-out infinite;
+    }
+
+    &::after {
+      content: "";
+      width: 100px;
+      height: 100px;
+      background-image: url("/static/svg/alien_grey.svg");
+      display: block;
+      position: absolute;
+      right: -60px;
+      top: -9px;
+      z-index: -1;
+      animation: floatRight 6s ease-in-out infinite;
+    }
+
+    @keyframes floatRight {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translateY(-20px) translateX(8px);
+      }
+      100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px) translateX(0px);
+      }
+    }
+
+    @keyframes floatLeft {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translateY(-20px) translateX(-8px);
+      }
+      100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px) translateX(0px);
+      }
+    }
+  }
+}
+
+body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("/static/images/background.jpg");
+  background-size: 180px;
+  background-repeat: repeat;
+}
+
+.group-space-ship {
+  position: relative;
+  cursor: pointer;
+  .space-ship {
+    width: 300px;
+    transform: rotate(90deg);
+    position: absolute;
+    left: -90px;
+    &.shaking:hover {
+      animation: spaceShaking 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+    &.flying{
+      animation: spaceInMiddle 10s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+    }
+  }
+
+  @keyframes spaceInMiddle {
+    0%, 99% {
+      pointer-events: none;
+    }
+    20% {
+      transform: translateX(-40%) translateY(-20%) rotate(90deg);
+      left: 35%;
+    }
+
+    60% {
+      transform: translateX(-50%)  translateY(0) rotate(180deg);
+      left: 50%;
+    }
+
+    100% {
+      transform: translateX(-50%)  translateY(100%) rotate(180deg) scale(.6);
+      left: 50%;
+    }
+  }
+
+  @keyframes spaceShaking {
+    10%,
+    90% {
+      top: -1px;
+    }
+
+    20%,
+    80% {
+      top: 2px;
+    }
+
+    30%,
+    50%,
+    70% {
+      top: -4px;
+    }
+
+    40%,
+    60% {
+      top: 4px;
+    }
+  }
+}
