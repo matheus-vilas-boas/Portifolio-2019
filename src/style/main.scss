@@ -5,12 +5,26 @@
 
 * {
   box-sizing: border-box;
+  font-family: "azidhor";
+
+}
+
+.card-details {
+  position: absolute;
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  line-height: 0;
+  text-align: center;
+  bottom: 50px;
 }
 
 header {
   width: 100%;
   display: flex;
   justify-content: center;
+
   h1 {
     color: white;
     font-family: "azidhor";
@@ -44,7 +58,8 @@ header {
       animation: floatRight 6s ease-in-out infinite;
     }
 
-    &::before, &::after {
+    &::before,
+    &::after {
       @media screen and (max-width:414px) {
         display: none;
       }
@@ -52,30 +67,34 @@ header {
 
     @keyframes floatRight {
       0% {
-        
+
         transform: translateY(0px) translateX(0px);
       }
+
       50% {
-        
+
         transform: translateY(-20px) translateX(8px);
       }
+
       100% {
-        
+
         transform: translateY(0px) translateX(0px);
       }
     }
 
     @keyframes floatLeft {
       0% {
-        
+
         transform: translateY(0px) translateX(0px);
       }
+
       50% {
-        
+
         transform: translateY(-20px) translateX(-8px);
       }
+
       100% {
-        
+
         transform: translateY(0px) translateX(0px);
       }
     }
@@ -84,51 +103,59 @@ header {
 
 body {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: url("/static/images/bg.jpeg");
   // background-size: 180px;
   margin: 0;
   background-repeat: repeat;
+  position: relative;
 }
 
 .group-space-ship {
   position: relative;
   cursor: pointer;
+
   .space-ship {
     width: 300px;
     transform: rotate(90deg);
     position: absolute;
     left: -90px;
+
     &.shaking:hover {
       animation: spaceShaking 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     }
-    &.flying{
+
+    &.flying {
       animation: spaceInMiddle 10s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
     }
   }
 
   @keyframes spaceInMiddle {
-    0%, 99% {
+
+    0%,
+    99% {
       pointer-events: none;
     }
+
     20% {
       transform: translateX(-40%) translateY(-20%) rotate(90deg);
       left: 35%;
     }
 
     60% {
-      transform: translateX(-50%)  translateY(0) rotate(180deg);
+      transform: translateX(-50%) translateY(0) rotate(180deg);
       left: 50%;
     }
 
     100% {
-      transform: translateX(-50%)  translateY(100%) rotate(180deg) scale(.6);
+      transform: translateX(-50%) translateY(100%) rotate(180deg) scale(.6);
       left: 50%;
     }
   }
 
   @keyframes spaceShaking {
+
     10%,
     90% {
       top: -1px;
